@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
 .header {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1440px;
-  height: 112px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background: #214457;
+  padding: 0px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .logo {
@@ -26,8 +28,6 @@
   font-size: 32px;
   line-height: 48px;
   letter-spacing: 0.05em;
-  width: 156px;
-  height: 48px;
   color: white;
 }
 

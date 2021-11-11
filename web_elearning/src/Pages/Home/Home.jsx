@@ -1,8 +1,8 @@
-import Header from "./Header/Header";
-import Bar from "./Bar/Bar";
-import Attend from "./Attend/Attend";
+import Header from "../../Components/Header/Header";
+import Bar from "../../Components/Bar/Bar";
+import Attend from "../../Components/Attend/Attend";
 import './Home.css'
-import Footer from "./Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 
 function Home() {
 
