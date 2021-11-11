@@ -1,0 +1,26 @@
+.bar {
+  width: 1440px;
+  height: 800px;
+}
+
+.image-bar {
+  position: absolute;
+  width: 1440px;
+  height: 800px;
+  left: 0px;
+  top: 0px;
+}
+
+.bar span {
+  color: white;
+}
+
+.search {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin-top: 371px;
+  margin-left: 628px;
+}
