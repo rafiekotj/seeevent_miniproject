@@ -1,18 +1,22 @@
-import Home from './Pages/Home/Home';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Signup from './Pages/Signup/Signup'
+// import Home from './Pages/Home/Home';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function App() {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#eb4034"
-      }
-    }
-  })
+  // const theme = createTheme({
+  //   palette: {
+  //     primary: {
+  //       main: "#eb4034"
+  //     }
+  //   }
+  // })
   return (
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
+    <div className="App">
+      <Signup />
+    </div>
+    // <ThemeProvider theme={theme}>
+    //   <Home />
+    // </ThemeProvider>
     
     
   );
