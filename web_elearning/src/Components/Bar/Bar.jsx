@@ -13,7 +13,7 @@ function Bar () {
                     background: 'white',
                     borderRadius: '99px',
                     padding: '0 17px',
-                    width: '704px',
+                    width: '673px',
                     height: '56px'
                 }}>
                     <Input
