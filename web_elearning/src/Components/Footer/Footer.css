@@ -1,6 +1,5 @@
 .footer {
   background: #214457;
-  width: 1440px;
   height: 371px;
   left: 0px;
   top: 2580px;
@@ -130,7 +129,7 @@
 
 .right {
   color: white;
-  margin-left: 10px;
+  margin-left: 128px;
   margin-top: 20px;
 }
 
