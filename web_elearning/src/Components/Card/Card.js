@@ -18,7 +18,9 @@ function CardComp(props) {
     console.log(data)
 
     return (
-        <Card sx={CardStyle.containerCard}>
+        <div className="container">
+            <div className="cardAttend">
+            <Card sx={CardStyle.containerCard}>
             <CardActionArea>
             <CardMedia
                 component="img"
@@ -77,6 +79,10 @@ function CardComp(props) {
             </CardContent>
             </CardActionArea>
         </Card>
+        </div>
+        </div>
+        
+        
     )
 }
 

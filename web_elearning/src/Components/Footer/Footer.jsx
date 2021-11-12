@@ -1,6 +1,6 @@
 import './Footer.css'
-import { Typography, Icon, Stack } from '@mui/material';
-import FacebookRounded from '@mui/icons-material/FacebookRounded';
+// import { Typography, Icon, Stack } from '@mui/material';
+// import FacebookRounded from '@mui/icons-material/FacebookRounded';
 
 function Footer () {
 

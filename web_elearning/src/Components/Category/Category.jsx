@@ -37,9 +37,9 @@ function Category() {
                     Explore event by category
                 </Typography>
             </div>
-            <div className="content_category">
-            <Stack direction="row" spacing={1}>
-                <div className="content_top">
+            <div className="content_top">
+                <Stack direction="row" spacing={1}>
+                
                     <Chip label="Photography" variant="outlined" onClick={handleClick}
                         sx={{
                             fontSize: '24px',
@@ -49,7 +49,8 @@ function Category() {
                             width: 248,
                             height: 68,
                             border: '1px solid #214457',
-                            color: '#214457'
+                            color: '#214457',
+                            marginRight: '16px'
                         }}
                     />
                     <Chip label="Design" variant="outlined" onClick={handleClick}
@@ -61,7 +62,8 @@ function Category() {
                             width: 248,
                             height: 68,
                             border: '1px solid #214457',
-                            color: '#214457'
+                            color: '#214457',
+                            marginRight: '16px'
                         }}
                     />
                     <Chip label="Development" variant="outlined" onClick={handleClick}
@@ -73,7 +75,8 @@ function Category() {
                             width: 248,
                             height: 68,
                             border: '1px solid #214457',
-                            color: '#214457'
+                            color: '#214457',
+                            marginRight: '16px'
                         }}
                     />
                     <Chip label="Marketing" variant="outlined" onClick={handleClick}
@@ -85,11 +88,15 @@ function Category() {
                             width: 248,
                             height: 68,
                             border: '1px solid #214457',
-                            color: '#214457'
+                            color: '#214457',
+                            marginRight: '16px'
                         }}
                     />
-                </div>
-                <div className="content_bottom">
+                
+                </Stack>
+            </div>
+            <div className="content_bottom">
+                <Stack direction="row" spacing={1}>
                     <Chip label="Business" variant="outlined" onClick={handleClick}
                         sx={{
                             fontSize: '24px',
@@ -126,9 +133,8 @@ function Category() {
                             color: '#214457'
                         }}
                     />
+                    </Stack>
                 </div>
-            </Stack>
-            </div>
             
         </div>
     )

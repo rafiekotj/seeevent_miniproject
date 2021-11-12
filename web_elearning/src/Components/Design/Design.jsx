@@ -1,10 +1,10 @@
-import './Attend.css'
+import './Design.css'
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Button, Stack, Paper, styled } from '@mui/material';
 // import ShareOutlined from '@mui/icons-material/ShareOutlined';
 // import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import CardComp from '../Card/Card'
 
-function Attend () {
+function Design () {
 
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
@@ -47,7 +47,7 @@ function Attend () {
     ]
 
     return (
-        <div className="attend">
+        <div className="Design">
             <div className="top">
                 <div className="title">
                     <Typography
@@ -101,4 +101,4 @@ function Attend () {
     )
 }
 
-export default Attend;
+export default Design;
