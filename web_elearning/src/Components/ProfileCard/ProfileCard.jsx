@@ -28,7 +28,7 @@ const Profilecard = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}>
-                    <Avatar src="#" sx={{width: 72, height: 72}} />
+                    <Avatar src="../../Assets/male.png" sx={{width: 72, height: 72}} />
                     <Typography component="h2" variant="p"sx={{
                         fontSize: "20px", 
                         lineHeight: "44px", 
