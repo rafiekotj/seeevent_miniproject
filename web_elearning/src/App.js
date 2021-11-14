@@ -2,10 +2,7 @@ import Signup from './Pages/Signup/Signup'
 import Home from './Pages/Home/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Event from './Pages/Event/Event';
-<<<<<<< HEAD
-import Account from './Pages/Account/Account';
-=======
->>>>>>> 1abb045f27c25b3ebc6fb95a88325a748a1b0f95
+// import Account from './Pages/Account/Account';
 import Signin from './Pages/Signin/Signin';
 
 function App() {
@@ -21,12 +18,9 @@ function App() {
       <Signin />
       {/* <Signup /> */}
       {/* <Event /> */}
-<<<<<<< HEAD
-      <Account />
+      {/* <Account /> */}
       {/* <Signin /> */}
-=======
       {/* <Home /> */}
->>>>>>> 1abb045f27c25b3ebc6fb95a88325a748a1b0f95
     </div>
     // <ThemeProvider theme={theme}>
     //   
