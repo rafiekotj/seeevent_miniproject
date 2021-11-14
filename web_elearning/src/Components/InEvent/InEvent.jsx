@@ -1,10 +1,28 @@
 import React from 'react'
-import { Stack, Container, Link, TextField, Grid, Typography, Button, Input, InputAdornment, FormControl, Icon, Box } from '@mui/material';
+import { Stack, Container, Link, TextField, Grid, Typography, Button, MenuItem, Box, TextareaAutosize } from '@mui/material';
 import FileUploadRounded from '@mui/icons-material/FileUploadRounded';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DatePicker, DesktopDatePicker } from '@mui/lab';
 
+const currencies = [
+    {
+        value: 'business',
+        label: 'Business',
+    },
+    {
+        value: 'marketing',
+        label: 'Marketing',
+    },
+    {
+        value: 'design',
+        label: 'Design',
+    },
+    {
+        value: 'development',
+        label: 'Development',
+    },
+];
 
 function InEvent() {
     const [value, setValue] = React.useState(null);
@@ -118,32 +136,31 @@ function InEvent() {
                         justifyContent: 'center',
                         marginLeft: '600px'
                     }}>
-                        <Grid item xs={12}>
-                            <TextField
-                                name="firstname"
-                                required
-                                fullWidth
-                                id="firstname"
-                                label="First Name"
-                            />
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                    label="Basic example"
-                                    value={value}
-                                    onChange={(newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                    renderInput={(params) => <TextField {...params} />}
-                                />
-                            </LocalizationProvider>
-                        </Grid>
-
-                    </Box>
+                    <Grid item xs={12}>
+                    <TextField
+                    name="firstname"
+                    required
+                    fullWidth
+                    id="firstname"
+                    label="First Name"
+                    />
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                    label="Basic example"
+                    value={value}
+                    onChange={(newValue) => {
+                    setValue(newValue);
+                }}
+                    />
+                    </Grid>
                 </Grid>
+
             </Box>
+        </Grid>
+            </Box >
 
 
-        </div>
+        </div >
     )
 }
 
