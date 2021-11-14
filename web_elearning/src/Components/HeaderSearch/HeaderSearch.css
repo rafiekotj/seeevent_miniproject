@@ -1,0 +1,9 @@
+.logoSearch {
+    display: flex;
+}
+
+.iconSearch {
+    width: 64px;
+    height: 34px;
+    margin:32px 8px 32px 108px
+}

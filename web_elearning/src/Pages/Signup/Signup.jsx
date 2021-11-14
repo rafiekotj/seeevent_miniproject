@@ -10,11 +10,15 @@ const Signup = () => {
             <div className="Top">
             <Header />
             </div>
+            <br />
+            <br />
             <div className="Mid">
             <Container sx={{width: 600, height: 678}}>
             <Signupform />
             </Container>
             </div>
+            <br />
+            <br />
             <Footer />
         </div>
     );
