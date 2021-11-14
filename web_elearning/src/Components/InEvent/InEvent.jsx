@@ -3,12 +3,12 @@ import { Stack, Container, Link, TextField, Grid, Typography, Button, Input, Inp
 import FileUploadRounded from '@mui/icons-material/FileUploadRounded';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import {DatePicker, DesktopDatePicker} from '@mui/lab';
+import { DatePicker, DesktopDatePicker } from '@mui/lab';
 
 
 function InEvent() {
     const [value, setValue] = React.useState(null);
-    
+
     return (
         <div>
             <Container component="secondary" maxWidth="sm">
@@ -19,73 +19,73 @@ function InEvent() {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}
-                    >
-                    <Typography component="h2" sx={{fontWeight: 'bold', fontStyle: 'normal', fontSize: 40, lineHeight: 3.5}}>
+                >
+                    <Typography component="h2" sx={{ fontWeight: 'bold', fontStyle: 'normal', fontSize: 40, lineHeight: 3.5 }}>
                         Create a new event!
                     </Typography>
-                    <Box component="form" sx={{width: 500, maxWidth: '100%',}}>
-                    <Grid container spacing={3}>
-                    <Grid item xs={12} style={{borderRadius: 10}}>
-                        <TextField 
-                            name="firstname"
-                            required
+                    <Box component="form" sx={{ width: 500, maxWidth: '100%', }}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} style={{ borderRadius: 10 }}>
+                                <TextField
+                                    name="firstname"
+                                    required
+                                    fullWidth
+                                    id="firstname"
+                                    label="First Name"
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                    <Stack>
+                                        <DesktopDatePicker
+                                            label="For desktop"
+                                            value={value}
+                                            minDate={new Date('2017-01-01')}
+                                            onChange={(newValue) => {
+                                                setValue(newValue);
+                                            }}
+                                            renderInput={(params) => <TextField {...params} />}
+                                        />
+                                    </Stack>
+                                </LocalizationProvider>
+                            </Grid>
+                            <Grid item xs={12} style={{ borderRadius: 10 }}>
+                                <TextField
+                                    name="email"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email"
+                                />
+                            </Grid>
+                            <Grid item xs={12} style={{ borderRadius: 10 }}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Password"
+                                    id="password"
+                                    autoComplete="new-password"
+                                />
+                            </Grid>
+                            <Grid item xs={12} style={{ borderRadius: 10 }}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    name="password"
+                                    label="Confirm Password"
+                                    id="confirm_password"
+                                    autoComplete="new-password"
+                                />
+                            </Grid>
+                        </Grid>
+                        <Button
+                            type="submit"
                             fullWidth
-                            id="firstname"
-                            label="First Name"
-                        />
-                        </Grid>
-                        <Grid item xs={12}>
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <Stack>
-                                <DesktopDatePicker
-                                    label="For desktop"
-                                    value={value}
-                                    minDate={new Date('2017-01-01')}
-                                    onChange={(newValue) => {
-                                        setValue(newValue);
-                                    }}
-                                    renderInput={(params) => <TextField {...params} />}
-                                />
-                            </Stack>
-                        </LocalizationProvider>
-                        </Grid>
-                        <Grid item xs={12} style={{borderRadius: 10}}>
-                        <TextField 
-                            name="email"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email"
-                        />
-                        </Grid>
-                        <Grid item xs={12} style={{borderRadius: 10}}>
-                            <TextField
-                                required
-                                fullWidth
-                                name="password"
-                                label="Password"
-                                id="password"
-                                autoComplete="new-password"
-                                />
-                        </Grid>
-                        <Grid item xs={12} style={{borderRadius: 10}}>
-                            <TextField
-                                required
-                                fullWidth
-                                name="password"
-                                label="Confirm Password"
-                                id="confirm_password"
-                                autoComplete="new-password"
-                                />
-                        </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        size="large"
-                        sx={{mt:3, mb:2}}
-                        style={{backgroundColor: '#214457', color: '#ffff'}}
+                            variant="contained"
+                            size="large"
+                            sx={{ mt: 3, mb: 2 }}
+                            style={{ backgroundColor: '#214457', color: '#ffff' }}
                         >Sign Up</Button>
                     </Box>
                     <Grid container justifyContent="center">
@@ -93,14 +93,14 @@ function InEvent() {
                             <Link href="#" variant="body2">
                                 Having Issue when Signup?
                             </Link>
-                            </Grid>
+                        </Grid>
                     </Grid>
-                    </Box>
+                </Box>
             </Container>
-            <Box component="form" sx={{ 
+            <Box component="form" sx={{
                 textAlign: 'center',
                 alignItems: 'center',
-             }}>
+            }}>
                 <Grid item xs={12}>
                     <Typography variant="h2">
                         Create a new event!
@@ -109,7 +109,7 @@ function InEvent() {
                     <Button variant="outlined" startIcon={<FileUploadRounded />}>
                         Upload Image
                     </Button>
-                    <Box sx={{ 
+                    <Box sx={{
                         display: 'block',
                         width: 600,
                         maxWidth: '100%',
@@ -119,7 +119,7 @@ function InEvent() {
                         marginLeft: '600px'
                     }}>
                         <Grid item xs={12}>
-                            <TextField 
+                            <TextField
                                 name="firstname"
                                 required
                                 fullWidth
@@ -131,18 +131,18 @@ function InEvent() {
                                     label="Basic example"
                                     value={value}
                                     onChange={(newValue) => {
-                                    setValue(newValue);
+                                        setValue(newValue);
                                     }}
                                     renderInput={(params) => <TextField {...params} />}
                                 />
                             </LocalizationProvider>
                         </Grid>
-                        
+
                     </Box>
                 </Grid>
             </Box>
-            
-            
+
+
         </div>
     )
 }

@@ -7,8 +7,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import Avatar from '@mui/material/Avatar'
 import IconButton from '@mui/material/IconButton';
+import Male from '../../Assets/male.png'
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -95,16 +96,17 @@ function HeaderSearch() {
                         </Button>
                         <IconButton
                             sx={{ color: 'white' }}>
-                            <AccountCircle />
+                            <Avatar alt="pratur" src={Male} sx={{width: 32, height: 32}} />
                             <Typography
                                 sx={{
                                     margin: '10px',
                                     fontFamily: 'Noto Sans',
                                     fontStyle: 'normal',
                                     fontWeight: 'bold',
-                                    fontSize: '17px',
+                                    fontSize: '16px',
+                                    lineHeight: '25.5px',
                                     color: 'white'
-                                }}>Ringo ishikawa</Typography>
+                                }}>My Account</Typography>
                         </IconButton>
                     </Box>
                 </Toolbar>

@@ -7,6 +7,7 @@ import { Avatar } from '@mui/material';
 import { Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import LogoutIcon from '@mui/icons-material/Logout';
+import Male from '../../Assets/male.png'
 
 const Profilecard = () => {
     const font = "'Noto Sans', sans-serif"
@@ -28,13 +29,13 @@ const Profilecard = () => {
                         flexDirection: 'column',
                         alignItems: 'center',
                     }}>
-                    <Avatar src="../../Assets/male.png" sx={{width: 72, height: 72}} />
+                    <Avatar src={Male} sx={{width: 72, height: 72}} />
                     <Typography component="h2" variant="p"sx={{
                         fontSize: "20px", 
                         lineHeight: "44px", 
                         color: "#373737"
-                    }}>Ringo Ishikawa</Typography>
-                    <Typography component="h4" variant="h6" sx={{lineHeight: "22px", color: "#000", fontSize: "16px"}}>Ringo@mail.com</Typography>
+                    }}>Pratur Anahata Pratama</Typography>
+                    <Typography component="h4" variant="h6" sx={{lineHeight: "22px", color: "#000", fontSize: "16px"}}>praturanhata45@gmail.com</Typography>
                     <br />
                     <Button startIcon={<LogoutIcon/>} variant="outlined" sx={{ background: 'white',  color:'#214457', borderRadius: 2}} >Sign Out</Button>
                     </Box>
