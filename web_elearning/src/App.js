@@ -2,6 +2,8 @@ import Signup from './Pages/Signup/Signup'
 import Home from './Pages/Home/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Event from './Pages/Event/Event';
+import Account from './Pages/Account/Account';
+import Signin from './Pages/Signin/Signin';
 
 function App() {
   const theme = createTheme({
@@ -14,7 +16,9 @@ function App() {
   return (
     <div className="App">
       {/* <Signup /> */}
-      <Event />
+      {/* <Event /> */}
+      <Account />
+      {/* <Signin /> */}
     </div>
     // <ThemeProvider theme={theme}>
     //   <Home />

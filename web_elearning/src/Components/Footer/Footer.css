@@ -134,8 +134,6 @@
 }
 
 .right h5 {
-  width: 98px;
-  height: 26px;
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: bold;
@@ -144,8 +142,6 @@
 }
 
 .right p {
-  width: 280px;
-  height: 79px;
   font-family: Noto Sans;
   font-style: normal;
   font-weight: normal;
@@ -161,9 +157,9 @@
   font-family: Noto Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 20px;
-  margin-right: 24px;
-  margin-top: 134px;
+  font-size: 10px;
+  line-height: 25px;
+  margin-right: 4px;
+  margin-top: 109px;
   margin-bottom: 0;
 }
