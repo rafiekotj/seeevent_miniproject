@@ -3,6 +3,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, Button, Stack
 import ShareOutlined from '@mui/icons-material/ShareOutlined';
 import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import CardStyle from './CardStyle'
+import Bookmark from '@mui/icons-material/Bookmark';
 
 function CardComp(props) {
     const {data} = props
@@ -38,7 +39,7 @@ function CardComp(props) {
                         <Item>{data.category}</Item>
                     </Stack>
                     <ShareOutlined color="action" sx={{ fontSize: 22, marginLeft:'134px', marginTop:'1px' }}/>
-                    <BookmarkBorderOutlined color="action" sx={{ fontSize: 22, marginLeft:'10px', marginTop:'1px' }}/>
+                    {data.bookmark ? <Bookmark color="action" sx={{ fontSize: 22, marginLeft:'10px', marginTop:'1px' }}/> : <BookmarkBorderOutlined color="action" sx={{ fontSize: 22, marginLeft:'10px', marginTop:'1px' }}/>}
                 </div>
                 
                 <Typography gutterBottom variant="h5" component="div"

@@ -1,0 +1,12 @@
+.top {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  margin-bottom: 120px;
+}
+
+.content-wrapper {
+  display: flex;
+}

@@ -21,28 +21,32 @@ function Attend () {
         category: 'Business',
         datePost: 'SUN, OCT 24 @ 1:15 AM ICT',
         title: 'How to make your business growth 10 times within 1 year',
-        createdBy: 'Adit nento'
+        createdBy: 'Adit nento',
+        bookmark: true,
        },
        {
         image : 'Pictures/linkedin-sales-solutions-6ie6OjshvWg-unsplash 1.png',
         category: 'Business',
         datePost: 'SUN, OCT 24 @ 1:15 AM ICT',
         title: 'Hitting Reset: How to Land A Job in UX Design',
-        createdBy: 'Ernest'
+        createdBy: 'Ernest',
+        bookmark: false
        },
        {
         image : 'Pictures/linkedin-sales-solutions-6ie6OjshvWg-unsplash 1 (2).png',
         category: 'Marketing',
         datePost: 'SUN, OCT 24 @ 1:15 AM ICT',
         title: 'Google Ads 101 with the best marketing agency',
-        createdBy: 'Budi Setiawan'
+        createdBy: 'Budi Setiawan',
+        bookmark: false
        },
        {
         image : 'Pictures/linkedin-sales-solutions-6ie6OjshvWg-unsplash 1 (3).png',
         category: 'Design',
         datePost: 'SUN, OCT 24 @ 1:15 AM ICT',
         title: 'How to create design system',
-        createdBy: 'Agung Dwi Putra'
+        createdBy: 'Agung Dwi Putra',
+        bookmark: false
        },
     ]
 
