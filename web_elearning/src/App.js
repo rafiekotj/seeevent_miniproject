@@ -14,9 +14,9 @@ function App() {
   })
   return (
     <div className="App">
-      <Signin />
+      {/* <Signin /> */}
       {/* <Signup /> */}
-      {/* <Event /> */}
+      <Event />
       {/* <Home /> */}
     </div>
     // <ThemeProvider theme={theme}>
