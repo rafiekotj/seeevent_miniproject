@@ -8,7 +8,7 @@ function Event() {
     return (
         <div>
             <HeaderCreate />
-            <Review />
+            <InEvent />
             <Footer />
         </div>
     )

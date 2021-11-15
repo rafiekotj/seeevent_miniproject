@@ -22,21 +22,10 @@ function Footer() {
                     <div className="follow">
                         <p>Follow Us on</p>
                         <div className="socmed">
-                            {/* <Icon sx={{ 
-                            width: '32px',
-                            height: '32px',
-                            fontSize: '25px',
-                            background: '#DADADA',
-                            textAlign: 'center'
-
-                            }}>
-                            <FacebookRounded/>
-                        </Icon> */}
-
-                            <img src="Pictures/Facebook.svg" />
-                            <img src="Pictures/Instagram.svg" />
-                            <img src="Pictures/Twitter.svg" />
-                            <img src="Pictures/Youtube.svg" />
+                            <img src="Pictures/Facebook.svg" alt="logo facebook"/>
+                            <img src="Pictures/Instagram.svg" alt="logo facebook"/>
+                            <img src="Pictures/Twitter.svg" alt="logo facebook"/>
+                            <img src="Pictures/Youtube.svg" alt="logo facebook"/>
                         </div>
 
                         <div className="copyright">
