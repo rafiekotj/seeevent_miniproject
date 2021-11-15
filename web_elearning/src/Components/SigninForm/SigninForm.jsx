@@ -21,7 +21,7 @@ function SigninForm() {
         direction="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ padding: "120px"}}>
+        sx={{ padding: "120px 0"}}>
 
         <Typography 
           component="h3"
