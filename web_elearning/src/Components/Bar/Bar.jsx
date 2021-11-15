@@ -2,13 +2,14 @@ import './Bar.css'
 import { Typography, Button, Input, InputAdornment, FormControl, Icon } from '@mui/material';
 import Search from '@mui/icons-material/Search';
 import HeaderforHome from '../HeaderforHome/HeaderforHome';
+import Header from '../Header/Header';
 
 function Bar () {
 
     return (
         <div className="bar">
             <img className="image-bar" src="Pictures/BG.png" alt="Bar" />
-            <HeaderforHome />
+            
             <div className="search">
                 <FormControl sx={{
                     border: '1px solid white',

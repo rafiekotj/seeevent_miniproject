@@ -19,7 +19,7 @@ function Home() {
           <Category />
           <Design />
         </div>
-        <Footer />
+        
       </div>
       
     );

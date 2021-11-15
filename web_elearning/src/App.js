@@ -6,7 +6,12 @@ import Event from './Pages/Event/Event';
 // import Account from './Pages/Account/Account';
 import Account from './Pages/Account/Account';
 import Signin from './Pages/Signin/Signin';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter , Route, Routes, Switch } from 'react-router-dom';
+import HeaderCreate from './Components/HeaderCreate/HeaderCreate';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import HeaderSearch from './Components/HeaderSearch/HeaderSearch';
+import DefaultLayout from './Components/DefaultLayout/DefaultLayout';
 
 function App() {
   const theme = createTheme({
@@ -17,25 +22,31 @@ function App() {
     }
   })
   return (
-    // <Provider store={[]}>
+    // <Provider>
       <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" exact component={Signin} />
-          <Route path="/home" component={Home} />
-          <Route path="/register" component={Signup} />
-          <Route path="/event" component={Event} />
-          <Route path="/account" component={Account} />
-        </Routes>
-      </Router>
-      {/* <Signin /> */}
-      {/* <Signup /> */}
-      {/* <Event /> */}
-      {/* <Account /> */}
-      {/* <Account /> */}
-      {/* <Signin /> */}
-      {/* <Home /> */}
-    </div>
+      
+        <BrowserRouter>
+        <DefaultLayout>
+          <Routes>
+            
+              <Route path="/" element={<Home />} />
+              <Route path="login" element={<Signin />} />
+              <Route path="register" element={<Signup />} />
+              <Route path="event" element={<Event />} />
+              <Route path="account" element={<Account />} />
+            
+          </Routes>
+          </DefaultLayout>
+        </BrowserRouter>
+      
+        {/* <Signin /> */}
+        {/* <Signup /> */}
+        {/* <Event /> */}
+        {/* <Account /> */}
+        {/* <Account /> */}
+        {/* <Signin /> */}
+        {/* <Home /> */}
+      </div>
     // </Provider>
     
     // <ThemeProvider theme={theme}>

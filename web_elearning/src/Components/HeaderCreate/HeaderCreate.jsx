@@ -1,5 +1,5 @@
 import './HeaderCreate.css'
-import { Typography, Button } from '@mui/material';
+import { Typography, Button, Link } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 function HeaderCreate() {
@@ -20,19 +20,22 @@ function HeaderCreate() {
             </div>
             <div className="signHome">
                 <Typography>
-                    <Button variant="text">
-                        <Typography
-                            sx={{
-                                fontFamily: 'Noto Sans',
-                                color: 'white',
-                                textTransform: 'capitalize',
-                                lineHeight: '28px',
-                                fontSize: '20px',
-                            }}
-                        >
-                            Sign Up
-                        </Typography>
-                    </Button>
+                    <Link to="/register">
+                        <Button variant="text">
+                            <Typography
+                                sx={{
+                                    fontFamily: 'Noto Sans',
+                                    color: 'white',
+                                    textTransform: 'capitalize',
+                                    lineHeight: '28px',
+                                    fontSize: '20px',
+                                }}
+                            >
+                                Sign Up
+                            </Typography>
+                        </Button>
+                    </Link>
+                    <Link to="/">
                     <Button variant="text">
                         <Typography
                             sx={{
@@ -46,6 +49,8 @@ function HeaderCreate() {
                             Sign In
                         </Typography>
                     </Button>
+                    </Link>
+                    
                     <Button
                         variant='contained'
                         sx={{
