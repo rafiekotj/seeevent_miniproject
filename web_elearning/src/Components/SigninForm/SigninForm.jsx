@@ -1,51 +1,38 @@
 import React from "react";
 import { Typography, TextField, Box, Button, Grid, Link } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 import InputAdornments from "./ShowPassword";
-import "./SigninForm.css"
 
 function SigninForm() {
-  const font = "'Noto Sans', sans-serif"
-
-    const theme=createTheme({
-        typography: {
-            fontFamily: font
-        }
-    });
-
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-      <Grid
-        container
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        sx={{ padding: "120px 0"}}>
+    <Grid
+      container
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      sx={{ margin: "120px 0"}}>
 
-        <Typography 
-          component="h3"
+        <Typography
           sx={{
-            mb: "56px",
+            marginBottom: "56px",
+            fontFamily: "'Noto Sans', sans-serif",
             fontWeight: "bold",
             fontStyle: "normal",
             fontSize: "40px",
             lineHeight: "44px",
-          }}>
-          Welcome back!
+          }}>Welcome back!
         </Typography>
 
         {/* <Typography 
           component="p"
           sx={{
             mb: "56px",
+            fontFamily: "'Noto Sans', sans-serif",
             fontWeight: "normal",
             fontStyle: "normal",
             fontSize: "20px",
             lineHeight: "28px",
             color: "#D74545",
-          }}>
-          Invalid email and password combination
+          }}>Invalid email and password combination
         </Typography> */}
 
         <Box
@@ -53,16 +40,15 @@ function SigninForm() {
           sx={{
             "& > :not(style)": {
               mb: 1,
-              width: "600px"},
-            marginBottom: "32px"
-          }}
+              width: "600px",},
+            marginBottom: "32px",
+            fontFamily: "'Noto Sans', sans-serif",}}
           noValidate
-          autoComplete="off"
-        >
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined" />
+          autoComplete="off">
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined" />
         </Box>
 
         <Box
@@ -72,10 +58,11 @@ function SigninForm() {
         <Button
           variant="contained"
           sx={{
-            mb: 1,
+            marginBottom: 1,
             width: "600px",
             height: "56px",
             textTransform: "none",
+            fontFamily: "'Noto Sans', sans-serif",
             fontWeight: "Bold",
             fontStyle: "Normal",
             fontSize: "20px",
@@ -84,9 +71,9 @@ function SigninForm() {
             "&:hover": {
               backgroundColor: "#2f5c74",
               boxShadow: "none"},
-        }}>
-          Sign In
+          }}>Sign In
         </Button>
+
         <Link
           href="#"
           underline="none"
@@ -100,9 +87,7 @@ function SigninForm() {
           }}>
           {'Forgot password?'}
         </Link>
-      </Grid>
-      </ThemeProvider>
-    </div>
+    </Grid>
   );
 };
 

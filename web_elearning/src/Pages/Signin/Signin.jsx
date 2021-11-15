@@ -1,21 +1,19 @@
 import React from 'react';
 import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
-import Signinform from '../../Components/SigninForm/SigninForm';
-import Container from '@mui/material/Container'
+import SigninForm from '../../Components/SigninForm/SigninForm';
+
 
 function Signin() {
     return (
         <div className="Signin">
             <div className="Top">
-            <Header />
+                <Header />
             </div>
             <div className="Mid">
-            <Container sx={{width: 600, height: 678}}>
-            <Signinform />
-            </Container>
+                <SigninForm />
             </div>
-            <Footer />
+                <Footer />
         </div>
     );
 }

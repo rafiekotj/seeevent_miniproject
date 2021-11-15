@@ -16,7 +16,7 @@ function SelectSort() {
   return (
     <Grid>
       <Box>
-        <FormControl fullWidth sx={{ width: "288px", marginRight: "24px" }}>
+        <FormControl fullWidth sx={{ width: "288px" }}>
           <InputLabel id="demo-simple-select-label">Sorting By</InputLabel>
           <Select
             labelId="demo-simple-select-label"
