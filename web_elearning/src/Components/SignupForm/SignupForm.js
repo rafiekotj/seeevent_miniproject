@@ -1,4 +1,6 @@
 import React from 'react';
+import { Formik } from 'formik'
+import * as yup from 'yup'
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -8,17 +10,33 @@ import { Button } from '@mui/material';
 import {Link} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import  { Container } from '@mui/material'
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel'
-import InputAdornment from '@mui/material/InputAdornment'
-import FormControl from '@mui/material/FormControl'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import './signupform.css'
 
+const schema = yup.object({
+    firstname: yup
+    .string()
+    .required('The Field Is Required'),
+    lastname: yup
+    .string()
+    .required('The Field Is Required'),
+    email: yup
+    .string()
+    .email('Enter a valid Email')
+    .required('Email is Required'),
+    password: yup
+    .string('Please Enter Your Password')
+    .required('Password must be required')
+    .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Password Must be at least 8 Characters"
+    ),
+    passwordConfirm: yup
+    .string()
+    .required('Re-enter your password')
+    .oneOf([yup.ref("password"), null], "Password must match")
+})
 
-const Signupform = () => {
+const Signupform = props => {
     const font = "'Noto Sans', sans-serif"
 
     const theme=createTheme({
@@ -27,36 +45,32 @@ const Signupform = () => {
         }
     });
     
-    const [values, setValues] = React.useState({
-        password: '',
-        showPassword: false,
-    });
-
-
-
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    }
-
-    const handleClickShowPassword = () => {
-        setValues({
-            ...values,
-            showPassword: !values.showPassword,
-        });
-    };
-
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    }
-
     return (
-        <div>
+        <Formik
+    validationSchema={schema}
+    onSubmit={console.log}
+    initialValues={{
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+    }}
+    >
+        {({
+            handleSubmit,
+            handleChange,
+            values,
+            touched,
+            errors,
+        }) => (
+            <div className="Signup">
             <ThemeProvider theme={theme}>
             <Container component="secondary" maxWidth="sm">
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: '10px',
+                        marginTop: '0px',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -74,6 +88,10 @@ const Signupform = () => {
                         fullWidth
                         id="firstname"
                         label="First Name"
+                        values={values.firstname}
+                        onChange={handleChange}
+                        error={touched.firstname && Boolean(errors.firstname)}
+                        helperText={touched.firstname && errors.firstname}
                         />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>
@@ -83,6 +101,10 @@ const Signupform = () => {
                         fullWidth
                         id="lastname"
                         label="Last Name"
+                        value={values.lastname}
+                        onChange={handleChange}
+                        error={touched.lastname && Boolean(errors.lastname)}
+                        helperText={touched.lastname && errors.lastname}
                         />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>
@@ -92,53 +114,38 @@ const Signupform = () => {
                         fullWidth
                         id="email"
                         label="Email"
+                        onChange={handleChange}
+                        error={touched.email && Boolean(errors.email)}
+                        helperText={touched.email && errors.email}
                         />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>
-                            <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    value={values.amount}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                            >
-                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                                </InputAdornment>
-                                    }
-                                    label="Password"
-                                    />
-                            </FormControl>
+                            <TextField
+                                fullWidth
+                                id="password"
+                                name="password"
+                                label="Password"
+                                type="password"
+                                value={values.password}
+                                onChange={handleChange}
+                                error={touched.password && Boolean(errors.password)}
+                                helperText={touched.password && errors.password}
+                                />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>
-                        <FormControl fullWidth variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    value={values.amount}
-                                    onChange={handleChange('password')}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                            >
-                                                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                                                </IconButton>
-                                                </InputAdornment>
-                                    }
-                                    label="Password"
-                                    />
-                            </FormControl>
+                        <TextField
+                        id='confirm-password'
+                        name='passwordConfirm'
+                        label='Confirm Password'
+                        fullWidth
+                        
+                        onChange={handleChange('passwordConfirm')}
+                        value={values.passwordConfirm}
+                        error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
+                        helperText={touched.passwordConfirm && errors.passwordConfirm}
+                        required
+                        type='password'
+                        />
                         </Grid>
                     </Grid>
                     <Button
@@ -146,8 +153,21 @@ const Signupform = () => {
                         fullWidth
                         variant="contained"
                         size="large"
-                        sx={{mt:3, mb:2}}
-                        style={{backgroundColor: '#214457', color: '#ffff'}}
+                        onClick={handleSubmit}
+                        sx={{
+                            mt: 3,
+                            mb:2,
+                            textTransform: "none",
+                            fontWeight: "Bold",
+                            fontStyle: "Normal",
+                            fontSize: "20px",
+                            backgroundColor: "#214457",
+                            boxShadow: "none",
+                            "&:hover": {
+                                backgroundColor: "#2f5c74",
+                                boxShadow: "none"
+                            },
+                        }}
                         >Sign Up</Button>
                     </Box>
                     <Grid container justifyContent="center">
@@ -160,7 +180,8 @@ const Signupform = () => {
                     </Box>
             </Container>
             </ThemeProvider>
-        </div>
+        </div>)}
+        </Formik>
     )
 }
 export default Signupform;

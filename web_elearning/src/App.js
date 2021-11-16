@@ -3,7 +3,6 @@ import Home from './Pages/Home/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import Event from './Pages/Event/Event';
-// import Account from './Pages/Account/Account';
 import Account from './Pages/Account/Account';
 import Signin from './Pages/Signin/Signin';
 import { BrowserRouter , Route, Routes, Switch } from 'react-router-dom';
@@ -27,7 +26,7 @@ function App() {
     // <Provider>
       <div className="App">
       
-        <BrowserRouter>
+        {/* <BrowserRouter>
           <DefaultLayout>
             <Switch>
                 <Route path="/" exact component={Home} />
@@ -39,7 +38,7 @@ function App() {
                 <Route path="/search" component={Search} />
             </Switch>
           </DefaultLayout>
-        </BrowserRouter>
+        </BrowserRouter> */}
       
         {/* <Signin /> */}
         {/* <Signup /> */}
