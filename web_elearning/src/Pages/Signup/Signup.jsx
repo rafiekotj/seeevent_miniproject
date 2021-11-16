@@ -8,7 +8,7 @@ const Signup = () => {
     return (
         <div className="Signup">
             <div className="Top">
-            <Header />
+            {/* <Header /> */}
             </div>
             <br />
             <br />
@@ -19,7 +19,7 @@ const Signup = () => {
             </div>
             <br />
             <br />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

@@ -9,7 +9,7 @@ const Account = () => {
     return (
         <div className="Account">
             <div className="top">
-                <HeaderSearch />
+                {/* <HeaderSearch /> */}
             </div>
             <br />
             <div className="mid">
@@ -18,7 +18,7 @@ const Account = () => {
                 </Container>
             </div>
             <br />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

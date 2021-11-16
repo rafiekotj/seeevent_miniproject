@@ -12,6 +12,8 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import HeaderSearch from './Components/HeaderSearch/HeaderSearch';
 import DefaultLayout from './Components/DefaultLayout/DefaultLayout';
+import Review from './Components/Review/Review';
+import Search from './Pages/Search/Search';
 
 function App() {
   const theme = createTheme({
@@ -26,16 +28,16 @@ function App() {
       <div className="App">
       
         <BrowserRouter>
-        <DefaultLayout>
-          <Routes>
-            
-              <Route path="/" element={<Home />} />
-              <Route path="login" element={<Signin />} />
-              <Route path="register" element={<Signup />} />
-              <Route path="event" element={<Event />} />
-              <Route path="account" element={<Account />} />
-            
-          </Routes>
+          <DefaultLayout>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/login" component={Signin} />
+                <Route path="/register" component={Signup} />
+                <Route path="/event" component={Event} />
+                <Route path="/review" component={Review} />
+                <Route path="/account" component={Account} />
+                <Route path="/search" component={Search} />
+            </Switch>
           </DefaultLayout>
         </BrowserRouter>
       

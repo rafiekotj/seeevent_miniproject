@@ -50,7 +50,7 @@ function Category() {
                             height: 68,
                             border: '1px solid #214457',
                             color: '#214457',
-                            marginRight: '16px'
+                            // marginRight: '16px'
                         }}
                     />
                     <Chip label="Design" variant="outlined" onClick={handleClick}

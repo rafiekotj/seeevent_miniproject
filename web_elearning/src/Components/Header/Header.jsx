@@ -21,13 +21,13 @@ function Header () {
                 <AvatarHeader />
             </div>
             <div className="sign">
-                <Link to="register">
+                <Link to="/register">
                     <ButtonSignUp />
                 </Link>
-                <Link to="login">
+                {/* <Link to="/login"> */}
                     <ButtonSignIn />
-                </Link>
-                <Link to="event">
+                {/* </Link> */}
+                <Link to="/event">
                     <ButtonCreateEvent />
                 </Link>
             </div>

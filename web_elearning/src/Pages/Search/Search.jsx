@@ -7,12 +7,12 @@ function Search() {
   return (
     <div className="Signin">
       <div className="Top">
-        <Header />
+        {/* <Header /> */}
       </div>
       <div className="Mid">
         <SearchBar />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

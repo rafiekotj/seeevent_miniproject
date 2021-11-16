@@ -7,9 +7,9 @@ import Review from '../../Components/Review/Review'
 function Event() {
     return (
         <div>
-            <HeaderCreate />
+            {/* <HeaderCreate /> */}
             <InEvent />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

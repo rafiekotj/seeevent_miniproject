@@ -8,12 +8,12 @@ function Signin() {
     return (
         <div className="Signin">
             <div className="Top">
-                <Header />
+                {/* <Header /> */}
             </div>
             <div className="Mid">
                 <SigninForm />
             </div>
-                <Footer />
+                {/* <Footer /> */}
         </div>
     );
 }

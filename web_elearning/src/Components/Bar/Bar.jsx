@@ -8,6 +8,7 @@ function Bar () {
 
     return (
         <div className="bar">
+            
             <img className="image-bar" src="Pictures/BG.png" alt="Bar" />
             
             <div className="search">
