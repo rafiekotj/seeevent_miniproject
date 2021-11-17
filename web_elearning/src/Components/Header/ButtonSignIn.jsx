@@ -3,13 +3,10 @@ import { Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 function ButtonSignIn() {
-    const coba = () => {
-        <Link to='/login' />
-        console.log(<Link/>)
-    }
+
     return (
         <div>
-            <Button variant="text" onClick={coba}>
+            <Button variant="text">
                 <Typography
                     sx={{
                         fontFamily: 'Noto Sans',

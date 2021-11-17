@@ -26,19 +26,19 @@ function App() {
     // <Provider>
       <div className="App">
       
-        {/* <BrowserRouter>
-          <DefaultLayout>
-            <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/login" component={Signin} />
-                <Route path="/register" component={Signup} />
-                <Route path="/event" component={Event} />
-                <Route path="/review" component={Review} />
-                <Route path="/account" component={Account} />
-                <Route path="/search" component={Search} />
-            </Switch>
-          </DefaultLayout>
-        </BrowserRouter> */}
+        <BrowserRouter>
+          <Switch>
+            <DefaultLayout>
+              <Route path="/" exact component={Home} />
+              <Route path="/login" component={Signin} />
+              <Route path="/register" component={Signup} />
+              <Route path="/event" component={Event} />
+              <Route path="/review" component={Review} />
+              <Route path="/account" component={Account} />
+              <Route path="/search" component={Search} />
+            </DefaultLayout>
+          </Switch>
+        </BrowserRouter>
       
         {/* <Signin /> */}
         {/* <Signup /> */}

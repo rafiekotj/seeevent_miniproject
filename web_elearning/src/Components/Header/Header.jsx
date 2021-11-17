@@ -1,5 +1,6 @@
 import './Header.css'
-import { Typography, Button, Link } from '@mui/material';
+import { useHistory, Link } from 'react-router-dom'
+import { Typography, Button } from '@mui/material';
 import ButtonSignUp from './ButtonSignUp';
 import ButtonSignIn from './ButtonSignIn';
 import ButtonCreateEvent from './ButtonCreateEvent';
@@ -7,7 +8,10 @@ import SearchField from './SearchField';
 import AvatarHeader from './AvatarHeader';
 
 function Header () {
-
+    const history = useHistory();
+    const {location} = history;
+    const {pathname} = location;
+    console.log(history);
     return (
         <div className="header">
             <div className="logo">
@@ -24,12 +28,12 @@ function Header () {
                 <Link to="/register">
                     <ButtonSignUp />
                 </Link>
-                {/* <Link to="/login"> */}
+                <Link to="/login">
                     <ButtonSignIn />
-                {/* </Link> */}
-                <Link to="/event">
-                    <ButtonCreateEvent />
                 </Link>
+                {pathname != '/event' && (<Link to="/event">
+                    <ButtonCreateEvent />
+                </Link>)}
             </div>
             
         </div>
