@@ -10,14 +10,16 @@ import {
   OutlinedInput,
   InputLabel,
   InputAdornment,
-  FormControl
+  FormControl,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { login } from "../../Redux/action/authAction";
 
 function SigninForm() {
   const [values, setValues] = React.useState({
     password: "",
-    showPassword: false
+    showPassword: false,
   });
 
   const handleChange = (prop) => (event) => {
@@ -27,7 +29,7 @@ function SigninForm() {
   const handleClickShowPassword = () => {
     setValues({
       ...values,
-      showPassword: !values.showPassword
+      showPassword: !values.showPassword,
     });
   };
 
@@ -38,21 +40,33 @@ function SigninForm() {
   const validEmail = new RegExp(
     "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
   );
-  
-  const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$");
-  
 
+  const validPassword = new RegExp(
+    "^(?=.*?[A-Za-z])(?=.*[!@#$%^&*])(?=.*?[0-9]).{8,}$"
+  );
+
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailErr, setEmailErr] = useState(false);
-  const [pwdError, setPwdError] = useState(false);
+  // const [emailErr, setEmailErr] = useState(false);
+  // const [pwdError, setPwdError] = useState(false);
   const validate = () => {
-    if (!validEmail.test(email)) {
-      setEmailErr(true);
+    // if (!validEmail.test(email)) {
+    //   setEmailErr(true);
+    // }
+    // if (!validPassword.test(password)) {
+    //   setPwdError(true);
+    // }
+    const valSurat = validEmail.test(email);
+    const valSandi = validPassword.test(password);
+    if (valSurat && valSandi) {
+      const data = {
+        email,
+        password,
+      };
+      dispatch(login(data));
     }
-    if (!validPassword.test(password)) {
-      setPwdError(true);
-    }
+    console.log(valSurat);
   };
 
   return (
@@ -68,60 +82,61 @@ function SigninForm() {
         direction="column"
         justifyContent="center"
         alignItems="center"
-        sx={{marginBottom: "56px"}}>
-          <Typography
-            sx={{
-              marginBottom: "8px",
-              fontFamily: "'Noto Sans', sans-serif",
-              fontWeight: "bold",
-              fontStyle: "normal",
-              fontSize: "40px",
-              lineHeight: "44px"
-            }}
-          >
-            Welcome back!
-          </Typography>
+        sx={{ marginBottom: "56px" }}
+      >
+        <Typography
+          sx={{
+            marginBottom: "8px",
+            fontFamily: "'Noto Sans', sans-serif",
+            fontWeight: "bold",
+            fontStyle: "normal",
+            fontSize: "40px",
+            lineHeight: "44px",
+          }}
+        >
+          Welcome back!
+        </Typography>
 
-          <Box>
-            {emailErr ? (
-              <Typography
-                sx={{
-                  fontFamily: "'Noto Sans', sans-serif",
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  fontSize: "18px",
-                  lineHeight: "28px",
-                  color: "#D74545"
-                }}
-              >
-                Invalid email and password combination
-              </Typography>
-            ) : pwdError ? (
-              <Typography
-                sx={{
-                  fontFamily: "'Noto Sans', sans-serif",
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  fontSize: "18px",
-                  lineHeight: "28px",
-                  color: "#D74545"
-                }}
-              >
-                Invalid email and password combination
-              </Typography>
-            ) : null}
-          </Box>
-        </Grid>
+        {/* <Box>
+          {emailErr ? (
+            <Typography
+              sx={{
+                fontFamily: "'Noto Sans', sans-serif",
+                fontWeight: "normal",
+                fontStyle: "normal",
+                fontSize: "18px",
+                lineHeight: "28px",
+                color: "#D74545",
+              }}
+            >
+              Invalid email and password combination
+            </Typography>
+          ) : pwdError ? (
+            <Typography
+              sx={{
+                fontFamily: "'Noto Sans', sans-serif",
+                fontWeight: "normal",
+                fontStyle: "normal",
+                fontSize: "18px",
+                lineHeight: "28px",
+                color: "#D74545",
+              }}
+            >
+              Invalid email and password combination
+            </Typography>
+          ) : null}
+        </Box> */}
+      </Grid>
 
       <Box
         component="form"
         sx={{
           "& > :not(style)": {
             mb: 1,
-            width: "600px"
+            width: "600px",
           },
           marginBottom: "32px",
-          fontFamily: "'Noto Sans', sans-serif"
+          fontFamily: "'Noto Sans', sans-serif",
         }}
         noValidate
         autoComplete="off"
@@ -142,7 +157,7 @@ function SigninForm() {
           sx={{
             fontFamily: "'Noto Sans', sans-serif",
             width: "600px",
-            marginBottom: "40px"
+            marginBottom: "40px",
           }}
           variant="outlined"
         >
@@ -187,8 +202,8 @@ function SigninForm() {
           boxShadow: "none",
           "&:hover": {
             backgroundColor: "#2f5c74",
-            boxShadow: "none"
-          }
+            boxShadow: "none",
+          },
         }}
       >
         Sign In
@@ -203,7 +218,7 @@ function SigninForm() {
           fontStyle: "normal",
           fontSize: "14px",
           lineHeight: "25.2px",
-          color: "#3E89AE"
+          color: "#3E89AE",
         }}
       >
         {"Forgot password?"}
