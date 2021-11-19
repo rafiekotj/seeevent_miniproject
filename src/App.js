@@ -13,6 +13,8 @@ import HeaderSearch from './Components/HeaderSearch/HeaderSearch';
 import DefaultLayout from './Components/DefaultLayout/DefaultLayout';
 import Review from './Components/Review/Review';
 import Search from './Pages/Search/Search';
+import Signupform from './Components/SignupForm/SignupForm';
+import store from './Redux/Store';
 
 function App() {
   const theme = createTheme({
@@ -23,10 +25,10 @@ function App() {
     }
   })
   return (
-    // <Provider>
+    <Provider store={store}>
       <div className="App">
       
-        <BrowserRouter>
+        {/* <BrowserRouter>
           <Switch>
             <DefaultLayout>
               <Route path="/" exact component={Home} />
@@ -38,8 +40,8 @@ function App() {
               <Route path="/search" component={Search} />
             </DefaultLayout>
           </Switch>
-        </BrowserRouter>
-      
+        </BrowserRouter> */}
+        <Signupform />
         {/* <Signin /> */}
         {/* <Signup /> */}
         {/* <Event /> */}
@@ -48,7 +50,7 @@ function App() {
         {/* <Signin /> */}
         {/* <Home /> */}
       </div>
-    // </Provider>
+    </Provider>
     
     // <ThemeProvider theme={theme}>
     //   

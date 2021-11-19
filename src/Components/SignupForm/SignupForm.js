@@ -11,6 +11,8 @@ import {Link} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import  { Container } from '@mui/material'
 import './signupform.css'
+import { register } from '../../Redux/action/authAction';
+import { useDispatch } from 'react-redux';
 
 const schema = yup.object({
     firstname: yup
@@ -36,9 +38,11 @@ const schema = yup.object({
     .oneOf([yup.ref("password"), null], "Password must match")
 })
 
+
+
 const Signupform = props => {
     const font = "'Noto Sans', sans-serif"
-
+const dispatch = useDispatch()
     const theme=createTheme({
         typography: {
             fontFamily: font
@@ -46,24 +50,24 @@ const Signupform = props => {
     });
     
     return (
-        <Formik
-    validationSchema={schema}
-    onSubmit={console.log}
-    initialValues={{
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
-    }}
-    >
-        {({
-            handleSubmit,
-            handleChange,
-            values,
-            touched,
-            errors,
-        }) => (
+        <Formik 
+        validationSchema={schema}
+        onSubmit={(values) => {console.log(values); dispatch(register(values))}}
+        initialValues={{
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+        }}
+        >
+            {({
+                handleSubmit,
+                handleChange,
+                values,
+                touched,
+                errors,
+            }) => (
             <div className="Signup">
             <ThemeProvider theme={theme}>
             <Container component="secondary" maxWidth="sm">
@@ -135,14 +139,14 @@ const Signupform = props => {
                         <Grid item xs={12} style={{borderRadius: 10}}>
                         <TextField
                         id='confirm-password'
-                        name='passwordConfirm'
+                        name='confirmPassword'
                         label='Confirm Password'
                         fullWidth
                         
-                        onChange={handleChange('passwordConfirm')}
-                        value={values.passwordConfirm}
-                        error={touched.passwordConfirm && Boolean(errors.passwordConfirm)}
-                        helperText={touched.passwordConfirm && errors.passwordConfirm}
+                        onChange={handleChange('confirmPassword')}
+                        value={values.confirmPassword}
+                        error={touched.confirmPassword && Boolean(errors.confirmPassword)}
+                        helperText={touched.confirmPassword && errors.confirmPassword}
                         required
                         type='password'
                         />
@@ -180,9 +184,10 @@ const Signupform = props => {
                     </Box>
             </Container>
             </ThemeProvider>
+            
         </div>)}
         </Formik>
-    )
+    );
 }
-export default Signupform;
 
+export default Signupform
