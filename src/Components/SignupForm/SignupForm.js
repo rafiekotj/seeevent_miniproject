@@ -15,10 +15,10 @@ import { register } from '../../Redux/action/authAction';
 import { useDispatch } from 'react-redux';
 
 const schema = yup.object({
-    firstname: yup
+    firstName: yup
     .string()
     .required('The Field Is Required'),
-    lastname: yup
+    lastName: yup
     .string()
     .required('The Field Is Required'),
     email: yup
@@ -32,7 +32,7 @@ const schema = yup.object({
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         "Password Must be at least 8 Characters"
     ),
-    passwordConfirm: yup
+    confirmPassword: yup
     .string()
     .required('Re-enter your password')
     .oneOf([yup.ref("password"), null], "Password must match")
@@ -54,8 +54,8 @@ const dispatch = useDispatch()
         validationSchema={schema}
         onSubmit={(values) => {console.log(values); dispatch(register(values))}}
         initialValues={{
-            firstname: "",
-            lastname: "",
+            firstName: "",
+            lastName: "",
             email: "",
             password: "",
             confirmPassword: ""
@@ -87,28 +87,28 @@ const dispatch = useDispatch()
                     <Grid container spacing={3}>
                     <Grid item xs={12} style={{borderRadius: 10}}>
                         <TextField 
-                        name="firstname"
+                        name="firstName"
                         required
                         fullWidth
-                        id="firstname"
+                        id="firstName"
                         label="First Name"
-                        values={values.firstname}
+                        values={values.firstName}
                         onChange={handleChange}
-                        error={touched.firstname && Boolean(errors.firstname)}
-                        helperText={touched.firstname && errors.firstname}
+                        error={touched.firstName && Boolean(errors.firstName)}
+                        helperText={touched.firstName && errors.firstName}
                         />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>
                         <TextField 
-                        name="lastname"
+                        name="lastName"
                         required
                         fullWidth
-                        id="lastname"
+                        id="lastName"
                         label="Last Name"
                         value={values.lastname}
                         onChange={handleChange}
-                        error={touched.lastname && Boolean(errors.lastname)}
-                        helperText={touched.lastname && errors.lastname}
+                        error={touched.lastName && Boolean(errors.lastName)}
+                        helperText={touched.lastName && errors.lastName}
                         />
                         </Grid>
                         <Grid item xs={12} style={{borderRadius: 10}}>

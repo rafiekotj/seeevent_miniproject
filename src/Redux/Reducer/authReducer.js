@@ -11,7 +11,8 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     const {type, payload} = action;
     switch(type) {
-        case REGISTER_SUCCESS: 
+        case REGISTER_SUCCESS:
+        console.log(payload)
         return {
             ...state,
             user: payload
