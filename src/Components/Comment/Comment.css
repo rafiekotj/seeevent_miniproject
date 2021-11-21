@@ -1,0 +1,21 @@
+.profile {
+  margin-top: 32px;
+  margin-bottom: 18.5px;
+}
+
+.avatar {
+  display: flex;
+}
+
+.name_avatar {
+  margin-left: 16px;
+}
+
+.created_by {
+  display: flex;
+  margin-left: 24px;
+}
+
+.name_create {
+  margin-left: 16px;
+}

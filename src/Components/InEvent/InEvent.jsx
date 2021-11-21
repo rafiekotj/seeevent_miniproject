@@ -5,6 +5,8 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { DateTimePicker } from '@mui/lab';
 import { styled } from '@mui/material/styles';
+import { createEvent } from '../../Redux/action/authAction';
+import { useDispatch } from 'react-redux';
 
 const currencies = [
     {
@@ -28,6 +30,7 @@ const currencies = [
 function InEvent() {
     const [value, setValue] = React.useState(new Date('2021-01-01T00:00:00.000Z'));
     const [currency, setCurrency] = React.useState('');
+    const dispatch = useDispatch();
     const handleChange = (event) => {
         setCurrency(event.target.value);
       };
@@ -130,6 +133,7 @@ function InEvent() {
                             </Grid>
                         </Grid>
                         <Button
+                            onSubmit={(value) => {console.log(value); dispatch(createEvent(value))}}
                             type="submit"
                             fullWidth
                             variant="contained"

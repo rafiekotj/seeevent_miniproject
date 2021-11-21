@@ -6,6 +6,9 @@ import ShareOutlined from '@mui/icons-material/ShareOutlined';
 import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import { styled } from '@mui/material/styles';
 import ChatBubbleOutline from '@mui/icons-material/ChatBubbleOutline';
+import { comment } from '../../Redux/action/authAction';
+import { useDispatch } from 'react-redux';
+import commentField from '../Comment/Comment'
 
 function stringToColor(string) {
     let hash = 0;
@@ -45,7 +48,27 @@ function Review() {
         textAlign: 'center',
         color: '#214457',
         background: '#F0F2E9',
-      }));
+    }));
+    
+    const dispatch = useDispatch();
+
+    const dataComment = [
+        {
+            nameProfile: 'Yoshua Ginting',
+            dateAgo: '4 days ago',
+            commentAccount: 'Hi, do you have a youtube channel that I can subscribe?',
+        },
+        {
+            nameProfile: 'Yoshua Ginting',
+            dateAgo: '4 days ago',
+            commentAccount: 'goood',
+        },
+        {
+            nameProfile: 'Yoshua Ginting',
+            dateAgo: '4 days ago',
+            commentAccount: 'mantap',
+        },
+     ]
 
     return (
         <div>
@@ -145,90 +168,9 @@ function Review() {
                                         }}>
                                         Comments
                                         </Typography>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
+                                        {dataComment?.map(item => (
+                                            <commentField data={item} />
+                                        ))}
                                         <div className="profile">
                                             <div className="avatar">
                                                 <Avatar {...stringAvatar('Yoshua Ginting')} />
@@ -254,7 +196,8 @@ function Review() {
                                                 }}
                                             />
                                             <Button 
-                                                variant="contained" 
+                                                variant="contained"
+                                                onClick={(value) => dispatch(comment(value))}
                                                 startIcon={<ChatBubbleOutline />}
                                                 sx={{
                                                     width: '184px',

@@ -28,7 +28,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
       
-        {/* <BrowserRouter>
+        <BrowserRouter>
           <Switch>
             <DefaultLayout>
               <Route path="/" exact component={Home} />
@@ -40,8 +40,8 @@ function App() {
               <Route path="/search" component={Search} />
             </DefaultLayout>
           </Switch>
-        </BrowserRouter> */}
-        <Signupform />
+        </BrowserRouter>
+        {/* <Signupform /> */}
         {/* <Signin /> */}
         {/* <Signup /> */}
         {/* <Event /> */}
