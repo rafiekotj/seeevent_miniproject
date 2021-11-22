@@ -67,7 +67,7 @@ function SigninForm() {
         password,
       };
       dispatch(login(data));
-      history.push("/")
+      history.push("/home")
     }
     console.log(valSurat);
   };

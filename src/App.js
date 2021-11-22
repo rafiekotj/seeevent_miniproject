@@ -15,6 +15,7 @@ import Review from "./Components/Review/Review";
 import Search from "./Pages/Search/Search";
 import Signupform from "./Components/SignupForm/SignupForm";
 import store from "./Redux/Store";
+import Homee from "./Pages/Home/Home_2";
 
 function App() {
   const theme = createTheme({
@@ -30,15 +31,20 @@ function App() {
       
         <BrowserRouter>
           <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" exact component={Homee} />
+          {/* <Route path="/event" exact component={Event} /> */}
+          <Route path="/event/:id" exact component={Review} />
+          {/* <Route path="/review" component={Review} /> */}
+          <Route path="/account" exact component={Account} />
+          <Route path="/post" exact component={Search} />
             <DefaultLayout>
-              <Route path="/" exact component={Home} />
-              <Route path="/login" component={Signin} />
-              <Route path="/register" component={Signup} />
-              <Route path="/event" component={Event} />
-              <Route path="/review" component={Review} />
-              <Route path="/account" component={Account} />
-              <Route path="/search" component={Search} />
+              
+              <Route path="/login" exact component={Signin} />
+              <Route path="/register" exact component={Signup} />
+              
             </DefaultLayout>
+            
           </Switch>
         </BrowserRouter>
         {/* <Signupform /> */}

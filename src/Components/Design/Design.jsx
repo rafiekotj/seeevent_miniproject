@@ -3,6 +3,7 @@ import { Card, CardActionArea, CardContent, CardMedia, Typography, Button, Stack
 // import ShareOutlined from '@mui/icons-material/ShareOutlined';
 // import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import CardComp from '../Card/Card'
+import {Link} from 'react-router-dom'
 
 function Design () {
 
@@ -68,6 +69,7 @@ function Design () {
                     </Typography>
                 </div>
                 <div className="klik">
+                    <Link to="/post" style={{ textDecoration: 'none' }}>
                     <Button variant="text"
                         sx={{
                             marginTop: '137px',
@@ -88,6 +90,7 @@ function Design () {
                         More Events
                         </Typography>
                     </Button>
+                    </Link>
                 </div>
 
             </div>

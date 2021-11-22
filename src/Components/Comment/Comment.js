@@ -1,9 +1,12 @@
 import React from 'react'
 import './Comment.css'
 import { Typography, Avatar } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
-function commentField(props) {
+function CommentField(props) {
     const {data} = props
+    const {user, waktuKomen, comment} = data
+    console.log(data)
     function stringToColor(string) {
       let hash = 0;
       let i;
@@ -25,32 +28,34 @@ function commentField(props) {
     }
     
     function stringAvatar(name) {
-      return {
-        sx: {
-          bgcolor: stringToColor(name),
-        },
-        children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
-      };
+      
+      if(name){
+        return {
+          sx: {
+            bgcolor: stringToColor(name),
+          },
+          children: `${name?.split(' ')?.[0]?.[0]}${name?.split(' ')?.[1]?.[0]}`,
+        };
+      }
     }
-    console.log(data)
     return (
         <div className="profile">
             <div className="avatar">
-                <Avatar {...stringAvatar('Yoshua Ginting')} />
+                <Avatar {...stringAvatar('test')} />
                 <div className="name_avatar">
                     <Typography component="h2" sx={{
                         fontWeight: 'bold',  
                         fontSize: '16px',
                         margin: 0
                     }}>
-                        {data.nameProfile}
+                        {user?.firstName}
                     </Typography>
                     <Typography component="h2" sx={{
                         fontWeight: 'normal',  
                         fontSize: '12px',
                         margin: 0
                     }}>
-                        {data.dateAgo}
+                        {waktuKomen}
                     </Typography>
                 </div>
             </div>
@@ -59,10 +64,10 @@ function commentField(props) {
                 fontSize: '14px',
                 margin: '16px 0'
             }}>
-                {data.commentAccount}
+                {comment}
             </Typography>
         </div>
     )
 }
 
-export default commentField;
+export default CommentField;

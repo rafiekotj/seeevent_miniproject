@@ -4,6 +4,7 @@ import ShareOutlined from '@mui/icons-material/ShareOutlined';
 import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import CardStyle from './CardStyle'
 import Bookmark from '@mui/icons-material/Bookmark';
+import {Link} from 'react-router-dom'
 
 function CardComp(props) {
     const {data} = props
@@ -21,6 +22,7 @@ function CardComp(props) {
     return (
         <div className="container">
             <div className="cardAttend">
+            <Link to="/event/1" style={{ textDecoration: 'none' }}>
             <Card sx={CardStyle.containerCard}>
             <CardActionArea>
             <CardMedia
@@ -80,6 +82,7 @@ function CardComp(props) {
             </CardContent>
             </CardActionArea>
         </Card>
+        </Link>
         </div>
         </div>
         

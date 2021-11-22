@@ -3,14 +3,9 @@ import React from 'react'
 
 
 const initialState = {
-    user: null,
-    token: null,
     posts: [
-        {
-            id: '', 
-            title: '', 
-            content: ''
-        },
+        {id: 1, title: 'post one', content: 'this is post one'},
+        {id: 2, title: 'post two', content: 'this is post two'},
     ]
 };
 

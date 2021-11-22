@@ -1,4 +1,5 @@
 import './Attend.css'
+import { useHistory, Link } from 'react-router-dom'
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Button, Stack, Paper, styled } from '@mui/material';
 // import ShareOutlined from '@mui/icons-material/ShareOutlined';
 // import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
@@ -72,6 +73,7 @@ function Attend () {
                     </Typography>
                 </div>
                 <div className="klik">
+                    <Link to="/post" style={{ textDecoration: 'none' }}>
                     <Button variant="text"
                         sx={{
                             marginTop: '137px',
@@ -92,6 +94,7 @@ function Attend () {
                         More Events
                         </Typography>
                     </Button>
+                    </Link>
                 </div>
 
             </div>

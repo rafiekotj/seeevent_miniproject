@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap");
 
-.headerHome {
+.headerCreate {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -11,18 +11,18 @@
   flex-grow: 0;
 }
 
-.logoHome {
+.logoCreate {
   display: flex;
 }
 
-.iconHome {
+.iconCreate {
   position: relative;
   width: 64px;
   height: 48px;
   margin: 32px 8px 32px 108px;
 }
 
-.logoHome p {
+.logoCreate p {
   position: relative;
   font-family: Helvetica;
   font-style: italic;
@@ -33,7 +33,7 @@
   color: white;
 }
 
-.signHome {
+.signCreate {
   display: flex;
   margin-top: 30px;
 }

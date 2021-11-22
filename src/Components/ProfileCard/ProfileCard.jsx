@@ -21,8 +21,8 @@ const Profilecard = () => {
 
     return (
             <ThemeProvider theme={theme}>
-            <Container component="primary" sx={{width: "388px", height: "195px"}}>
-                <CssBaseline />
+            
+                
                 <Box 
                     sx={{
                         display: 'flex',
@@ -39,7 +39,7 @@ const Profilecard = () => {
                     <br />
                     <Button startIcon={<LogoutIcon/>} variant="outlined" sx={{ background: 'white',  color:'#214457', borderRadius: 2}} >Sign Out</Button>
                     </Box>
-            </Container>
+            
             </ThemeProvider>
         
     );

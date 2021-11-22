@@ -1,6 +1,10 @@
 import './HeaderforHome.css'
 import { Typography, Button } from '@mui/material';
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@mui/styles';
+import ButtonSignUp from '../Header/ButtonSignUp';
+import ButtonSignIn from '../Header/ButtonSignIn';
+import ButtonCreateEvent from '../Header/ButtonCreateEvent';
 
 function HeaderforHome() {
     const useStyles = makeStyles({
@@ -19,49 +23,13 @@ function HeaderforHome() {
                 <p>SeeEvent</p>
             </div>
             <div className="signHome">
-                <Typography>
-                    <Button variant="text">
-                        <Typography
-                            sx={{
-                                fontFamily: 'Noto Sans',
-                                color: 'white',
-                                textTransform: 'capitalize',
-                                lineHeight: '28px',
-                                fontSize: '20px',
-                            }}
-                        >
-                            Sign Up
-                        </Typography>
-                    </Button>
-                    <Button variant="text">
-                        <Typography
-                            sx={{
-                                fontFamily: 'Noto Sans',
-                                color: 'white',
-                                textTransform: 'capitalize',
-                                lineHeight: '28px',
-                                fontSize: '20px'
-                            }}
-                        >
-                            Sign In
-                        </Typography>
-                    </Button>
-                    <Button
-                        variant='contained'
-                        sx={{
-                            background: 'linear-gradient(45deg, #F2D555 30%, #F2D555 90%)',
-                            borderRadius: 99,
-                            height: '40px',
-                            width: '184px',
-                            color: '#373737',
-                            fontWeight: 'bold',
-                            marginRight: '108px',
-                            marginLeft: '20px'
-                        }}
-                    >
-                        Create Events
-                    </Button>
-                </Typography>
+                <Link to="/register" style={{ textDecoration: 'none' }}>
+                    <ButtonSignUp />
+                </Link>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                    <ButtonSignIn />
+                </Link>
+
 
             </div>
 

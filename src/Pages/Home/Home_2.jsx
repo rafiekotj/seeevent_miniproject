@@ -6,14 +6,15 @@ import Footer from "../../Components/Footer/Footer";
 import Category from "../../Components/Category/Category";
 import Design from "../../Components/Design/Design";
 import HeaderforHome from "../../Components/HeaderforHome/HeaderforHome";
+import Barr from "../../Components/Bar/Bar_2";
 
-function Home() {
+function Homee() {
 
     return (
       <div className="Home">
         <div className="Top">
           {/* <HeaderforHome /> */}
-          <Bar />
+          <Barr />
         </div>
         <div className="Mid">
           <Attend />
@@ -26,4 +27,4 @@ function Home() {
     );
   }
   
-  export default Home;
+  export default Homee;

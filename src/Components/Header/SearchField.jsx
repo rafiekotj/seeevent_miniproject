@@ -8,7 +8,8 @@ const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: '99px',
     backgroundColor: '#F0F0F1',
-    marginLeft: 0,
+    marginRight: 250,
+    marginTop: 10,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(0),

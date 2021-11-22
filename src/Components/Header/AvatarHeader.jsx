@@ -6,7 +6,7 @@ function AvatarHeader() {
     return (
         <div>
             <IconButton
-                    sx={{ color: 'white' }}>
+                    sx={{ color: 'white'}}>
                     <Avatar alt="pratur" src={Male} sx={{width: 32, height: 32}} />
                     <Typography
                         sx={{

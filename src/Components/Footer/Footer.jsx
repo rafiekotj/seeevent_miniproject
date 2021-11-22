@@ -1,6 +1,11 @@
 import './Footer.css'
 // import { Typography, Icon, Stack } from '@mui/material';
 // import FacebookRounded from '@mui/icons-material/FacebookRounded';
+import logoFooter from '../../Assets/SeeEventLogo(4).svg'
+import facebook from '../../Assets/Facebook.svg'
+import instagram from '../../Assets/Instagram.svg'
+import twitter from '../../Assets/Twitter.svg'
+import youtube from '../../Assets/Youtube.svg'
 
 function Footer() {
 
@@ -9,7 +14,7 @@ function Footer() {
             <div className="container">
                 <div className="left">
                     <div className="logo">
-                        <img className="icon" src="Pictures/SeeEventLogo(4).svg" alt="Logo" />
+                        <img className="icon" src={logoFooter} alt="Logo" />
                         <p>SeeEvent</p>
                     </div>
 
@@ -22,10 +27,10 @@ function Footer() {
                     <div className="follow">
                         <p>Follow Us on</p>
                         <div className="socmed">
-                            <img src="Pictures/Facebook.svg" alt="logo facebook"/>
-                            <img src="Pictures/Instagram.svg" alt="logo facebook"/>
-                            <img src="Pictures/Twitter.svg" alt="logo facebook"/>
-                            <img src="Pictures/Youtube.svg" alt="logo facebook"/>
+                            <img src={facebook} alt="logo facebook"/>
+                            <img src={instagram} alt="logo facebook"/>
+                            <img src={twitter} alt="logo facebook"/>
+                            <img src={youtube} alt="logo facebook"/>
                         </div>
 
                         <div className="copyright">

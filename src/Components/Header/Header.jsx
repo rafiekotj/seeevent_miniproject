@@ -12,28 +12,43 @@ function Header () {
     const {location} = history;
     const {pathname} = location;
     console.log(history);
+    const styling = () => {
+        if(pathname != '/event') {
+            return <ButtonCreateEvent sx={{display: 'hidden'}}/>
+        } 
+    }
+    
     return (
         <div className="header">
+            <Link to="/" style={{ textDecoration: 'none' }}> 
             <div className="logo">
-                <img className="icon" src="Pictures/SeeEventLogo(3).svg" alt="Logo" />
-                <p>SeeEvent</p>
+                
+                    <img className="icon" src="Pictures/SeeEventLogo(3).svg" alt="Logo" />
+                    <p>SeeEvent</p>
+                
             </div>
+            </Link>
             <div className="search_header">
-                <SearchField />
+                {/* <SearchField /> */}
             </div>
             <div className="account_header">
-                <AvatarHeader />
+                {/* <AvatarHeader /> */}
             </div>
             <div className="sign">
-                <Link to="/register">
+                <Link to="/register" style={{ textDecoration: 'none' }}>
                     <ButtonSignUp />
                 </Link>
-                <Link to="/login">
+                <Link to="/login" style={{ textDecoration: 'none' }}>
                     <ButtonSignIn />
                 </Link>
-                {pathname != '/event' && (<Link to="/event">
-                    <ButtonCreateEvent />
-                </Link>)}
+                
+                {/* {pathname != '/event' && (<Link to="/event">
+                    <ButtonCreateEvent sx={{display: 'hidden'}}/>
+                </Link>)} */}
+
+                {/* {pathname == '/event' && (<Link to="/event">
+                    <AvatarHeader />
+                </Link>)} */}
             </div>
             
         </div>

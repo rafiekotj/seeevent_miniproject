@@ -7,6 +7,8 @@ import { DateTimePicker } from '@mui/lab';
 import { styled } from '@mui/material/styles';
 import { createEvent } from '../../Redux/action/authAction';
 import { useDispatch } from 'react-redux';
+import HeaderCreate from '../HeaderCreate/HeaderCreate';
+import Footer from '../Footer/Footer';
 
 const currencies = [
     {
@@ -46,6 +48,7 @@ function InEvent() {
 
     return (
         <div>
+            <HeaderCreate />
             <Container component="secondary" maxWidth="xl">
                 <Box
                     sx={{
@@ -161,7 +164,8 @@ function InEvent() {
                         </Grid>
                     </Grid>
                 </Box>
-            </Container>        
+            </Container>
+            <Footer />      
         </div>
     )
 }

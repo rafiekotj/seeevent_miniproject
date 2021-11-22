@@ -58,7 +58,8 @@ const Signupform = props => {
     return (
         <Formik 
         validationSchema={schema}
-        onSubmit={(values) => {console.log(values); dispatch(register(values))}}
+        onSubmit={(values) => {console.log(values); dispatch(register(values));
+        history.push('/login')}}
         initialValues={{
             firstName: "",
             lastName: "",

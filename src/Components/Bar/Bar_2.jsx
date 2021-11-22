@@ -3,12 +3,13 @@ import { Typography, Button, Input, InputAdornment, FormControl, Icon } from '@m
 import Search from '@mui/icons-material/Search';
 import HeaderforHome from '../HeaderforHome/HeaderforHome';
 import Header from '../Header/Header';
+import HeaderforHomee from '../HeaderforHome/HeaderforHome_2';
 
-function Bar () {
+function Barr () {
 
     return (
         <div className="bar">
-            <HeaderforHome />
+            <HeaderforHomee />
             <img className="image-bar" src="Pictures/BG.png" alt="Bar" />
             
             <div className="search">
@@ -70,4 +71,4 @@ function Bar () {
     )
 }
 
-export default Bar;
+export default Barr;

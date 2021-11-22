@@ -85,20 +85,21 @@ export const deleteComment = (id) => {
     }
 };
 
-export const createComment = (data) => async (dispatch) => {
-    try {
-        const res = await axios.post({
-            method: 'delete',
-            url: `${API_URL}comment/${data.id}`,
-            headers: {
-                access_token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3ROYW1lIjoiRGVuYSIsImxhc3ROYW1lIjoiZWthIiwiZW1haWwiOiJkZW5hQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDZrSVJVYWh0WkxEQ3dCS3Q4Z2RqVmVXM1NLa0FFQUxwc2xlcnBpTnJlbDBaMTYvTzRWdTlxIiwiaW1hZ2UiOiJkMzQ2NWUzNDhhZjI0M2YwODhiOTI5MjNlZWE2OTU5Zi5KUEciLCJjcmVhdGVkQXQiOiIyMDIxLTExLTE1VDEwOjI3OjI3LjA1OVoiLCJ1cGRhdGVkQXQiOiIyMDIxLTExLTE1VDEwOjI3OjI3LjA1OVoiLCJkZWxldGVkQXQiOm51bGwsImlhdCI6MTYzNjk3NDE5M30.ZQAjsZvKl_mROFn52DYQFom4XQmfYxiWh-xOpjZBdKU`
-            },
-            data: {
-                comment: data.comment
-            }
-        });
-        dispatch(addComment(res.data))
-    } catch (error) {
-        console.log(error);
-    }
-};
+// export const createComment = (data) => async (dispatch) => {
+//     try {
+//         const res = await axios.post({
+//             method: 'delete',
+//             url: `${API_URL}comment/${data.id}`,
+//             headers: {
+//                 access_token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZmlyc3ROYW1lIjoiRGVuYSIsImxhc3ROYW1lIjoiZWthIiwiZW1haWwiOiJkZW5hQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJDZrSVJVYWh0WkxEQ3dCS3Q4Z2RqVmVXM1NLa0FFQUxwc2xlcnBpTnJlbDBaMTYvTzRWdTlxIiwiaW1hZ2UiOiJkMzQ2NWUzNDhhZjI0M2YwODhiOTI5MjNlZWE2OTU5Zi5KUEciLCJjcmVhdGVkQXQiOiIyMDIxLTExLTE1VDEwOjI3OjI3LjA1OVoiLCJ1cGRhdGVkQXQiOiIyMDIxLTExLTE1VDEwOjI3OjI3LjA1OVoiLCJkZWxldGVkQXQiOm51bGwsImlhdCI6MTYzNjk3NDE5M30.ZQAjsZvKl_mROFn52DYQFom4XQmfYxiWh-xOpjZBdKU`
+//             },
+//             data: {
+//                 comment: data.comment
+//             }
+//         });
+//         dispatch(addComment(res.data))
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+

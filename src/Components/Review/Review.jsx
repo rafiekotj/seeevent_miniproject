@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './Review.css'
 import { Stack, Container, Link, TextField, Grid, Typography, Button, Avatar, Box, Paper } from '@mui/material';
 import CalendarTodayOutlined from '@mui/icons-material/CalendarTodayOutlined';
@@ -6,9 +7,18 @@ import ShareOutlined from '@mui/icons-material/ShareOutlined';
 import BookmarkBorderOutlined from '@mui/icons-material/BookmarkBorderOutlined';
 import { styled } from '@mui/material/styles';
 import ChatBubbleOutline from '@mui/icons-material/ChatBubbleOutline';
-import { createComment, addComment, deleteComment } from '../../Redux/action/authAction';
+import { CommentList} from '../Comment/CommentList'
 import { useDispatch } from 'react-redux';
 import commentField from '../Comment/Comment'
+import { v4 as uuidv4 } from "uuid"
+import {addComment} from '../../Redux/action/authAction'
+import CommentField from '../Comment/Comment';
+import {useParams} from 'react-router-dom'
+import HeaderCreate from '../HeaderCreate/HeaderCreate';
+import Footer from '../Footer/Footer';
+import {PostComment} from '../Comment/PostComment'
+import { useSelector } from 'react-redux'
+import { AddComment } from '../Comment/AddComment';
 
 function stringToColor(string) {
     let hash = 0;
@@ -16,31 +26,84 @@ function stringToColor(string) {
   
     /* eslint-disable no-bitwise */
     for (i = 0; i < string.length; i += 1) {
-      hash = string.charCodeAt(i) + ((hash << 5) - hash);
+        hash = string.charCodeAt(i) + ((hash << 5) - hash);
     }
   
     let color = '#';
   
     for (i = 0; i < 3; i += 1) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += `00${value.toString(16)}`.substr(-2);
+        const value = (hash >> (i * 8)) & 0xff;
+        color += `00${value.toString(16)}`.substr(-2);
     }
-    /* eslint-enable no-bitwise */
+/* eslint-enable no-bitwise */
   
     return color;
-  }
-  
-  function stringAvatar(name) {
+}
+
+function stringAvatar(name) {
     return {
-      sx: {
+    sx: {
         bgcolor: stringToColor(name),
-      },
-      children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    },
+    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
     };
-  }
+}
 
 function Review() {
+    const [post, setPost] = useState({
+        id: '',
+        title: ''
+    })
+    const {posts} = useSelector(state => state);
+    const [dataDetail, setDataDetail] = useState()
+    const [dataComments, setDataComments] = useState()
+    const {id} = useParams()
+    const dispatch = useDispatch()
+    const currentToken = localStorage.getItem("token")
 
+    useEffect(() => {
+        const fetchDetail = async () => {
+            try{
+                const res = await axios.get(`https://timdevent.herokuapp.com/events/${id}`)
+                
+                setDataDetail(res.data.data)
+                console.log(res.data.data)
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        const fetchComment = async () => {
+            try{
+                const res = await axios.get(`https://timdevent.herokuapp.com/comments/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${currentToken}`
+                    }
+                })
+                console.log(res)
+                setDataComments(res.data.allComments)
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        if(id){
+            console.log(currentToken)
+            fetchDetail()
+            fetchComment()
+        }
+    }, [id])
+
+    const handleChange = (e) => {
+        setPost({...post, [e.target.name]: e.target.value})
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(addComment(post))
+        setPost({
+            id: uuidv4(),
+            title: '',  
+        })
+    }
     const Item = styled(Paper)(({ theme }) => ({
         ...theme.typography.body2,
         padding: '4px 16px',
@@ -49,29 +112,10 @@ function Review() {
         color: '#214457',
         background: '#F0F2E9',
     }));
-    
-    const dispatch = useDispatch();
-
-    const dataComment = [
-        {
-            nameProfile: 'Yoshua Ginting',
-            dateAgo: '4 days ago',
-            commentAccount: 'Hi, do you have a youtube channel that I can subscribe?',
-        },
-        {
-            nameProfile: 'Yoshua Ginting',
-            dateAgo: '4 days ago',
-            commentAccount: 'goood',
-        },
-        {
-            nameProfile: 'Yoshua Ginting',
-            dateAgo: '4 days ago',
-            commentAccount: 'mantap',
-        },
-     ]
 
     return (
         <div>
+            <HeaderCreate />
             <Container component="primary" maxWidth="xl">
                 <Box
                     sx={{
@@ -88,7 +132,7 @@ function Review() {
                             height: '36px',
                             margin: 0
                         }}>
-                            ESL Game: English on Your Feet!™
+                            {dataDetail?.title}
                         </Typography>
                         <div className="info">
                             <CalendarTodayOutlined sx={{ fontSize: 20 }} />
@@ -102,23 +146,23 @@ function Review() {
                                 marginRight: '24px'
                             }}
                             >
-                                SUN, OCT 24 @ 1:15 AM ICT
+                                {dataDetail?.eventDate} @ {dataDetail?.eventTime}
                             </Typography>
                             <Stack direction="row" spacing={2}>
-                                <Item>Business</Item>
+                                <Item>{dataDetail?.category?.category}</Item>
                             </Stack>
                         </div>
-                        <img src="Pictures/unsplash_rxpThOwuVgE.png" alt="posting"/>
+                        <img src={dataDetail?.photoEvent} alt="posting"/>
                         <Box sx={{
                             width: 808,
                             }}
                         >
-                            <Grid container spacing={1} columns={12}
+                            <Grid container columns={12}
                                 sx={{
                                     marginTop: '32px',
                                 }}
                             >
-                                <Grid item xl={7}>
+                                <Grid item xl={7} sx={{padding: 0}}>
                                     <Typography component="h2" sx={{
                                         fontWeight: 'bold',  
                                         fontSize: '24px',
@@ -129,34 +173,12 @@ function Review() {
                                     Details
                                     </Typography>
                                     <Typography component="h5" sx={{
+                                        width: '496px',
                                         fontWeight: 'normal',  
                                         fontSize: '14px',
                                         lineHeight: '20px',
                                     }}>
-                                    Welcome to the Parlor! Let's play English on Your Feet!™
-
-                                    GET FEEDBACK
-                                    GAIN CONFIDENCE
-                                    LAYER UP YOUR ENGLISH!™
-
-                                    Everyone will have a chance to speak to the "audience" and receive feedback from the audience and our coaches. You don't need to prepare anything--just prepare to have fun and try!
-
-                                    Relax. Layer Up your English!™
-
-                                    We look forward to your participation.
-
-                                    PLEASE READ: 5 Important Notes about this Meetup
-
-                                    1) This event is not a lecture or conversation practice.
-                                    This is a structured activity in which all attendees are expected to actively participate.
-
-                                    2) Participation in "English on Your Feet!™ is optimal for English language learners at the intermediate level and above.
-
-                                    3) Each member-participant is allowed one guest-participant per meetup as space allows. Guest-participants may attend as guests a maximum of 2 times then must join to continue.
-
-                                    4) If your plans change, please update your RSVP. Repeated "no-shows" will be removed.
-
-                                    5) We use Google Meet. A Google or Gmail account is NOT required to use the link and join our meeting. Before the meetup, please open the link (given to you when you RSVP) and explore the following features on the same device that you will use to attend: mute/unmute, chat box, and the additional options menu. (See the PHOTO for visual instructions.)
+                                    {dataDetail?.detail || ''}
                                     </Typography>
                                     <div className="comment">
                                         <Typography component="h2" sx={{
@@ -168,141 +190,71 @@ function Review() {
                                         }}>
                                         Comments
                                         </Typography>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
-                                                    }}>
-                                                    Yoshua Ginting
-                                                    </Typography>
-                                                    <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '12px',
-                                                        margin: 0
-                                                    }}>
-                                                    4 days ago
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                            <Typography component="h2" sx={{
-                                                        fontWeight: 'normal',  
-                                                        fontSize: '14px',
-                                                        margin: '16px 0'
-                                            }}>
-                                                Hi, do you have a youtube channel that I can subscribe?
-                                            </Typography>
-                                        </div>
 
-                                        <div className="profile">
-                                            <div className="avatar">
-                                                <Avatar {...stringAvatar('Yoshua Ginting')} />
-                                                <div className="name_avatar">
+                                        {dataComments?.map(item => (
+                                            <CommentField data={item}/>
+                                        ))}
+
+                                        
+                                        
+                                        <form onSubmit={handleSubmit}>
+                                            <div className="profile">
+                                                <div className="avatar">
+                                                    <Avatar {...stringAvatar('Yoshua Ginting')} />
+                                                    <div className="name_avatar">
+                                                        <Typography component="h2" sx={{
+                                                            fontWeight: 'bold',  
+                                                            fontSize: '16px',
+                                                            margin: 0
+                                                        }}>
+                                                        Yoshua Ginting
+                                                        </Typography>
+                                                    </div>
+                                                </div>
+                                                <TextField
+                                                    id="outlined-multiline-static"
+                                                    onChange={handleChange}
+                                                    value={post.title}
+                                                    name='title'
+                                                    multiline
+                                                    rows={4}
+                                                    placeholder="Enter your comment here"
+                                                    sx={{
+                                                        marginTop: '16px',
+                                                        marginBottom: '16px',
+                                                        width: '496px',
+                                                        height: '128px'
+                                                    }}
+                                                />
+                                                <Button 
+                                                    variant="contained"
+                                                    startIcon={<ChatBubbleOutline />}
+                                                    sx={{
+                                                        width: '184px',
+                                                        height: '48px',
+                                                        borderRadius: '10px',
+                                                        background: 'linear-gradient(45deg, #214457 30%, #214457 90%)',
+                                                        marginLeft: '282px',
+                                                        marginBottom: '100px'
+                                                    }}
+                                                >
                                                     <Typography component="h2" sx={{
                                                         fontWeight: 'bold',  
-                                                        fontSize: '16px',
-                                                        margin: 0
+                                                        fontSize: '20px',
+                                                        width: '116px'
                                                     }}>
-                                                    Yoshua Ginting
+                                                        Submit
                                                     </Typography>
-                                                </div>
+                                                </Button>
                                             </div>
-                                            <TextField
-                                                id="outlined-multiline-static"
-                                                fullWidth
-                                                multiline
-                                                rows={4}
-                                                placeholder="Enter your comment here"
-                                                sx={{
-                                                    marginTop: '16px',
-                                                    marginBottom: '16px',
-                                                }}
-                                            />
-                                            <Button 
-                                                variant="contained"
-                                                onClick={(value) => dispatch(createComment(value))}
-                                                startIcon={<ChatBubbleOutline />}
-                                                sx={{
-                                                    width: '184px',
-                                                    height: '48px',
-                                                    borderRadius: '10px',
-                                                    background: 'linear-gradient(45deg, #214457 30%, #214457 90%)',
-                                                    marginLeft: '282px',
-                                                    marginBottom: '100px'
-                                                }}
-                                            >
-                                                <Typography component="h2" sx={{
-                                                    fontWeight: 'bold',  
-                                                    fontSize: '20px',
-                                                    width: '116px'
-                                                }}>
-                                                    Submit
-                                                </Typography>
-                                            </Button>
-                                        </div>
+                                        </form>
+                                        {/* <AddComment />
+                                        <CommentList /> */}
                                     </div>
                                     
                                 </Grid>
-                                <Grid item xl={5}>
+                                <Grid item xl={5} sx={{padding: 0}}>
+                                    
                                     <div className="created_by">
                                         <Avatar {...stringAvatar('Yoshua Ginting')} />
                                         <div className="name_create">
@@ -370,6 +322,7 @@ function Review() {
                     
                 </Box>
             </Container>
+            <Footer />
         </div>
     )
 }

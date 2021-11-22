@@ -1,12 +1,13 @@
-import './HeaderCreate.css'
+import './HeaderforHome.css'
 import { Typography, Button } from '@mui/material';
-import { useHistory, Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@mui/styles';
+import ButtonSignUp from '../Header/ButtonSignUp';
+import ButtonSignIn from '../Header/ButtonSignIn';
+import ButtonCreateEvent from '../Header/ButtonCreateEvent';
 import AvatarHeader from '../Header/AvatarHeader';
-import SearchField from '../Header/SearchField';
-import logoHeader from '../../Assets/SeeEventLogo(3).svg'
 
-function HeaderCreate() {
+function HeaderforHomee() {
     const useStyles = makeStyles({
         root: {
             background: 'linear-gradient(45deg, #F2D555 30%, #F2D555 90%)',
@@ -17,17 +18,13 @@ function HeaderCreate() {
     });
     const classes = useStyles();
     return (
-        <div className="headerCreate">
-            <Link to="/home" style={{ textDecoration: 'none' }}>
-            <div className="logoCreate">
-                <img className="iconCreate" src={logoHeader} alt="Logo" />
+        <div className="headerHome">
+            <div className="logoHome">
+                <img className="iconHome" src="Pictures/SeeEventLogo(3).svg" alt="Logo" />
                 <p>SeeEvent</p>
             </div>
-            </Link>
-            <div className="signCreate">
-                <SearchField />
-                    
-                    <Button
+            <div className="signHome">
+            <Button
                         variant='contained'
                         sx={{
                             background: 'linear-gradient(45deg, #F2D555 30%, #F2D555 90%)',
@@ -38,6 +35,7 @@ function HeaderCreate() {
                             fontWeight: 'bold',
                             marginTop: '8px',
                             marginRight: '39px',
+                            marginLeft: '-200px',
                             display: 'flex'
                         }}
                     >
@@ -46,8 +44,7 @@ function HeaderCreate() {
                     <Link to="/account" style={{ textDecoration: 'none' }}>
                         <AvatarHeader />
                     </Link>
-                    
-                
+
 
             </div>
 
@@ -55,4 +52,4 @@ function HeaderCreate() {
     )
 }
 
-export default HeaderCreate;
+export default HeaderforHomee;
