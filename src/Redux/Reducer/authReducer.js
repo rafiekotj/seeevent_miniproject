@@ -1,21 +1,30 @@
-import {REGISTER_SUCCESS,REGISTER_FAILED, CREATEEVENT_SUCCESS, CREATEEVENT_FAILED, COMMENT_SUCCESS, COMMENT_FAILED } from '../typeAction';
+import {REGISTER_SUCCESS,REGISTER_FAILED, CREATEEVENT_SUCCESS, CREATEEVENT_FAILED, ADD_COMMENT, DELETE_COMMENT } from '../typeAction';
 import React from 'react'
 
 
 const initialState = {
     user: null,
-    token: null
+    token: null,
+    posts: [
+        {
+            id: '', 
+            title: '', 
+            content: ''
+        },
+    ]
 };
 
-
 const authReducer = (state = initialState, action) => {
-    const {type, payload} = action;
-    switch(type) {
-        case REGISTER_SUCCESS: 
-        return {
-            ...state,
-            user: payload
-        }
+    const {
+        type,
+        payload
+    } = action;
+    switch (action.type) {
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                user: payload,
+            };
 
         case REGISTER_FAILED:
             return {
@@ -33,15 +42,15 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 user: payload
             }
-        case COMMENT_SUCCESS:
+        case ADD_COMMENT:
             return {
                 ...state,
-                user: payload
+                posts: [action.post, ...state.posts]
             }
-        case COMMENT_FAILED:
+        case DELETE_COMMENT:
+            const newPost = state.posts.filter(post => post.id !== action.id)
             return {
-                ...state,
-                user: payload
+                posts: newPost
             }
         default: {
             return {
@@ -49,6 +58,6 @@ const authReducer = (state = initialState, action) => {
             };
         }
     }
-}
+};
 
 export default authReducer;
