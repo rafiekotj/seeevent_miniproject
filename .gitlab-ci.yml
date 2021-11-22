@@ -9,7 +9,7 @@ image: node: 14.18.0
 before_script:
   -apt-get update -qq && apt-get install
 
-  cache:
+cache:
   paths:
     -node_modules/
 
@@ -26,4 +26,4 @@ script:
   paths:
   - node_modules/
   only:
-  -
+  - pages
