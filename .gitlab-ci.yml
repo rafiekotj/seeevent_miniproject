@@ -7,16 +7,16 @@
 image: node:14.18.0
 
 before_script:
-  -apt-get update -qq && apt-get install
+  - apt-get update -qq && apt-get install
 
 cache:
   paths:
-    -node_modules/
+    - node_modules/
 
 stages:
-- build
-- test
-- deploy
+  - build
+  - test
+  - deploy
 
 build:
   stage: build
