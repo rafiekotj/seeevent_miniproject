@@ -49,13 +49,9 @@ function SigninForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-<<<<<<< HEAD
   const history = useHistory();
   // const [emailErr, setEmailErr] = useState(false);
   // const [pwdError, setPwdError] = useState(false);
-=======
-  const [message, setMessage] = useState(false);
->>>>>>> 485e101da50b43c4edb06a046f5ed876dd994077
   const validate = () => {
     const valSurat = validEmail.test(email);
     const valSandi = validPassword.test(password);
@@ -65,12 +61,7 @@ function SigninForm() {
         password,
       };
       dispatch(login(data));
-<<<<<<< HEAD
       history.push("/home")
-=======
-    } else {
-      setMessage(true);
->>>>>>> 485e101da50b43c4edb06a046f5ed876dd994077
     }
     console.log(valSurat);
   };
