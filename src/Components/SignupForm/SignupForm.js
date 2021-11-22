@@ -13,6 +13,7 @@ import  { Container } from '@mui/material'
 import './signupform.css'
 import { register } from '../../Redux/action/authAction';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 
 const schema = yup.object({
     firstName: yup
@@ -43,6 +44,8 @@ const schema = yup.object({
 const Signupform = props => {
     const font = "'Noto Sans', sans-serif"
 const dispatch = useDispatch()
+const history = useHistory();
+    
     const theme=createTheme({
         typography: {
             fontFamily: font
@@ -52,7 +55,8 @@ const dispatch = useDispatch()
     return (
         <Formik 
         validationSchema={schema}
-        onSubmit={(values) => {console.log(values); dispatch(register(values))}}
+        onSubmit={(values) => {console.log(values); dispatch(register(values));
+        history.push('/login')}}
         initialValues={{
             firstName: "",
             lastName: "",
