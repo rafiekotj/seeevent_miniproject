@@ -49,16 +49,14 @@ function SigninForm() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+<<<<<<< HEAD
   const history = useHistory();
   // const [emailErr, setEmailErr] = useState(false);
   // const [pwdError, setPwdError] = useState(false);
+=======
+  const [message, setMessage] = useState(false);
+>>>>>>> 485e101da50b43c4edb06a046f5ed876dd994077
   const validate = () => {
-    // if (!validEmail.test(email)) {
-    //   setEmailErr(true);
-    // }
-    // if (!validPassword.test(password)) {
-    //   setPwdError(true);
-    // }
     const valSurat = validEmail.test(email);
     const valSandi = validPassword.test(password);
     if (valSurat && valSandi) {
@@ -67,7 +65,12 @@ function SigninForm() {
         password,
       };
       dispatch(login(data));
+<<<<<<< HEAD
       history.push("/home")
+=======
+    } else {
+      setMessage(true);
+>>>>>>> 485e101da50b43c4edb06a046f5ed876dd994077
     }
     console.log(valSurat);
   };
@@ -100,8 +103,8 @@ function SigninForm() {
           Welcome back!
         </Typography>
 
-        {/* <Box>
-          {emailErr ? (
+        <Box>
+          {message && (
             <Typography
               sx={{
                 fontFamily: "'Noto Sans', sans-serif",
@@ -114,21 +117,8 @@ function SigninForm() {
             >
               Invalid email and password combination
             </Typography>
-          ) : pwdError ? (
-            <Typography
-              sx={{
-                fontFamily: "'Noto Sans', sans-serif",
-                fontWeight: "normal",
-                fontStyle: "normal",
-                fontSize: "18px",
-                lineHeight: "28px",
-                color: "#D74545",
-              }}
-            >
-              Invalid email and password combination
-            </Typography>
-          ) : null}
-        </Box> */}
+          )}
+        </Box>
       </Grid>
 
       <Box
@@ -136,7 +126,7 @@ function SigninForm() {
         sx={{
           "& > :not(style)": {
             mb: 1,
-            width: "600px",
+            width: "500px",
           },
           marginBottom: "32px",
           fontFamily: "'Noto Sans', sans-serif",
@@ -159,7 +149,7 @@ function SigninForm() {
           onChange={(e) => setPassword(e.target.value)}
           sx={{
             fontFamily: "'Noto Sans', sans-serif",
-            width: "600px",
+            width: "500px",
             marginBottom: "40px",
           }}
           variant="outlined"
@@ -194,7 +184,7 @@ function SigninForm() {
         variant="contained"
         sx={{
           marginBottom: 1,
-          width: "600px",
+          width: "500px",
           height: "56px",
           textTransform: "none",
           fontFamily: "'Noto Sans', sans-serif",
