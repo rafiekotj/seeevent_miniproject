@@ -47,6 +47,7 @@ function SigninForm() {
   );
 
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
@@ -95,7 +96,7 @@ function SigninForm() {
         </Typography>
 
         <Box>
-          {message && (
+          {/* {message && (
             <Typography
               sx={{
                 fontFamily: "'Noto Sans', sans-serif",
@@ -108,7 +109,7 @@ function SigninForm() {
             >
               Invalid email and password combination
             </Typography>
-          )}
+          )} */}
         </Box>
       </Grid>
 
